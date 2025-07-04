@@ -19,7 +19,7 @@ type API1 struct {
 
 var ErrDaveIsForbidden = errors.New("u r banned Dave")
 
-func (a *API1) CreateCustomer(ctx context.Context, name string) (planner.API1Customer, error) {
+func (a *API1) CreateCustomer(_ context.Context, name string) (planner.API1Customer, error) {
 	if name == "Dave" {
 		return planner.API1Customer{}, ErrDaveIsForbidden
 	}
@@ -33,11 +33,11 @@ func (a *API1) CreateCustomer(ctx context.Context, name string) (planner.API1Cus
 	return newCustomer, nil
 }
 
-func (a *API1) GetCustomer(ctx context.Context, id string) (planner.API1Customer, error) {
+func (a *API1) GetCustomer(_ context.Context, id string) (planner.API1Customer, error) {
 	return a.customers[id], nil
 }
 
-func (a *API1) UpdateCustomer(ctx context.Context, id, name string) error {
+func (a *API1) UpdateCustomer(_ context.Context, id, name string) error {
 	customer, ok := a.customers[id]
 	if !ok {
 		return errors.New("oh no")

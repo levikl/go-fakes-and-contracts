@@ -9,7 +9,7 @@ type API1Decorator struct {
 	UpdateCustomerFunc func(ctx context.Context, id, name string) error
 }
 
-// assert API1Decorator implements API1
+// assert API1Decorator implements API1.
 var _ API1 = &API1Decorator{}
 
 func NewAPIDelegate(delegate API1) *API1Decorator {
